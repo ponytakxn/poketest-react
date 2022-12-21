@@ -19,10 +19,9 @@ const getAll = async(count) => {
     const pokemonList = [];
     for(let i = 1; i <= count ; i++){
         const pokemon = await getPokemon(i);
-        if(pokemon.id){
+        if(pokemon.id > 0){
             pokemonList.push(pokemon);
-        }
-        
+        }       
     }
     return pokemonList;
 }
@@ -31,7 +30,7 @@ const HomePage = () => {
     const [pokemonList, setPokemonList] = useState([]);
 
     useEffect(()=>{
-        getAll(500)
+        getAll(905)
             .then(data=>{
                 setPokemonList(data)
             })
